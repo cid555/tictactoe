@@ -1,16 +1,9 @@
-# This is a sample Python script.
+print('Welcome to Tic-tac-toe')
+print('...')
+print('...')
+print('...')
+print('...')
+print('...')
+user_input = input('Where do you want to place your next Tic-tac-toe move? ')
 
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+print(user_input)
