@@ -16,13 +16,10 @@ def check_if_spot_filled(arg, game):
         return False
 
 def input_validation(arg):
-    if arg.isdigit():
-        if(int(arg) > 9):
-            return False
-        else:
-            return True
-    else:
+    if not arg.isdigit():
         return False
+    num = int(arg)
+    return 1 <= num <= 9
 
 print('...')
 
