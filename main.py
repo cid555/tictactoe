@@ -12,7 +12,7 @@ def check_if_spot_filled(arg, game):
     if game[int(arg)-1] != 'X':
         return True
     else:
-        print('_____That spot is already used!!!! Select another spot!!!!')
+        print('WARNING! _____That spot is already used!!!! Select another spot!!!!')
         return False
 
 def input_validation(arg):
@@ -21,10 +21,12 @@ def input_validation(arg):
     num = int(arg)
     return 1 <= num <= 9
 
-print('...')
 
-# Starting statement
+# Starting of the GAME
+# Starting of the GAME
+# Starting of the GAME
 print_board()
+print('...')
 print('...')
 print('Welcome to Tic-tac-toe')
 print('...')
@@ -34,15 +36,15 @@ print('...')
 print('...')
 
 # Game condition
-while(not done):
+while not done:
     user_input = input('Where do you want to place your next Tic-tac-toe move? Choose between 1-9: ')
-    if (input_validation(user_input)):
-        if(check_if_spot_filled(user_input, board)):
+    if input_validation(user_input):
+        if check_if_spot_filled(user_input, board):
             board[int(user_input)-1] = 'X'
         else:
             print('hi')
     else:
-        print('Input is not a valid number!')
+        print('WARNING! Input is not a valid number!')
 
 
     print_board()
