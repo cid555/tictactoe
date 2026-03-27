@@ -28,6 +28,12 @@ def input_validation(arg):
     num = int(arg)
     return 1 <= num <= 9
 
+def check_tie(game):
+    for spot in game:
+        if spot != "X" and spot != "O":
+            return False
+    return True
+
 def player_checker(arg):
     if arg == 'X':
         return 'Player 1 or "X"'
@@ -78,6 +84,11 @@ while not done:
                 print(f'{player_checker(current_player)} WINS!!!!!')
                 print('...')
                 done = True
+            elif check_tie(gameboard):
+                print_gameboard()
+                print("The game has ended as a tie!")
+                done = True
+
             else:
                 if current_player == 'X':
                     current_player = 'O'
