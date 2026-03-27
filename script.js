@@ -32,23 +32,41 @@ function checkWinner() {
     return false;
 }
 
+function checkTie() {
+    for (let i = 0; i < board.length; i++) {
+        if (board[i] !== "X" && board[i] !== "O") {
+            return false;
+        }
+    }
+    return true;
+}
+
 const cells = document.querySelectorAll(".cell");
 
 cells.forEach(function(cell) {
     cell.addEventListener("click", function() {
+        if (done) {
+            return;
+        }
 
         const index = cell.dataset.index;
 
         if (cell.textContent !== "X" && cell.textContent !== "O") {
-
             cell.textContent = currentPlayer;
             board[index] = currentPlayer;
 
             if (checkWinner()) {
                 console.log(currentPlayer + " wins!");
+                done = true;
+                return;
             }
 
-            console.log(board)
+            if (checkTie()) {
+                console.log("It's a tie!");
+                done = true;
+                return;
+            }
+
             if (currentPlayer === "X") {
                 currentPlayer = "O";
             } else {
