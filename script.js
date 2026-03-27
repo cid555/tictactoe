@@ -2,10 +2,18 @@ console.log("JS connected")
 
 let currentPlayer = "X";
 
-const button1 = document.getElementById("btn1");
+const cells = document.querySelectorAll(".cell");
 
-button1.addEventListener("click", function() {
-    if (button1.textContent === "1") {
-        button1.textContent = currentPlayer;
-    }
+cells.forEach(function(cell) {
+    cell.addEventListener("click", function() {
+        if (cell.textContent !== "X" && cell.textContent !== "O") {
+            cell.textContent = currentPlayer;
+
+            if (currentPlayer === "X") {
+                currentPlayer = "O";
+            } else {
+                currentPlayer = "X";
+            }
+        }
+    });
 });
