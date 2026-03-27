@@ -36,6 +36,26 @@ def player_checker(arg):
     else:
         return 'Genie'
 
+def check_winner(game):
+    if game[0] == game[1] == game[2]:
+        return True
+    elif game[3] == game[4] == game[5]:
+        return True
+    elif game[6] == game[7] == game[8]:
+        return True
+    elif game[0] == game[3] == game[6]:
+        return True
+    elif game[1] == game[4] == game[7]:
+        return True
+    elif game[2] == game[5] == game[8]:
+        return True
+    elif game[0] == game[4] == game[8]:
+        return True
+    elif game[2] == game[4] == game[6]:
+        return True
+    else:
+        return False
+
 # Starting of the GAME
 # Starting of the GAME
 # Starting of the GAME
@@ -51,13 +71,18 @@ while not done:
     user_input = input('Place your next move by choosing between 1-9: ')
     if input_validation(user_input):
         if check_if_spot_filled(user_input, gameboard):
-            gameboard[int(user_input)-1] = current_player
-            if current_player == 'X':
-                current_player = 'O'
-            elif current_player == 'O':
-                current_player = 'X'
+            gameboard[int(user_input) - 1] = current_player
+
+            if check_winner(gameboard):
+                print('...')
+                print(f'{player_checker(current_player)} WINS!!!!!')
+                print('...')
+                done = True
             else:
-                current_player = 'O'
+                if current_player == 'X':
+                    current_player = 'O'
+                else:
+                    current_player = 'X'
     else:
         print('...')
         print('WARNING! THE INPUT YOU ENTERED IS NOT A VALID ENTRY!')
