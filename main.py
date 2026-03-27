@@ -4,12 +4,13 @@ done = False
 current_player = 'X'
 
 def print_gameboard():
+    print("")
     print(gameboard[0], "|", gameboard[1], "|", gameboard[2])
     print("---------")
     print(gameboard[3], "|", gameboard[4], "|", gameboard[5])
     print("---------")
     print(gameboard[6], "|", gameboard[7], "|", gameboard[8])
-
+    print("")
 
 def check_if_spot_filled(arg, game):
     if game[int(arg) - 1] != 'X' and game[int(arg) - 1] != 'O':
@@ -29,8 +30,6 @@ def input_validation(arg):
 # Starting of the GAME
 # Starting of the GAME
 print_gameboard()
-print('...')
-print('...')
 print('Welcome to Tic-tac-toe')
 print('...')
 print('...')
@@ -45,10 +44,17 @@ while not done:
     if input_validation(user_input):
         if check_if_spot_filled(user_input, gameboard):
             gameboard[int(user_input)-1] = current_player
+            if current_player == 'X':
+                current_player = 'O'
+            elif current_player == 'O':
+                current_player = 'X'
+            else:
+                current_player = 'O'
         else:
-            print('hi')
+            print('How did you reach here')
     else:
-        print('WARNING! Input is not a valid number!')
+        print('...')
+        print('WARNING! _______Input is not a valid number!')
 
 
     print_gameboard()
