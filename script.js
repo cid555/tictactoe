@@ -4,9 +4,14 @@ function return_default_numbers() {
     return ["1","2","3","4","5","6","7","8","9"];
 }
 
+let playerX = "Player 1";
+let playerO = "Player 2";
 let board = return_default_numbers();
 let currentPlayer = "X";
 let done = false;
+
+playerX = prompt("Enter name for Player X:") || "Player 1";
+playerO = prompt("Enter name for Player O:") || "Player 2";
 
 function checkWinner() {
     if (board[0] === board[1] && board[1] === board[2]) {
@@ -46,7 +51,7 @@ function checkTie() {
 }
 
 const message = document.querySelector(".message");
-message.textContent = "Player 1's turn (X)";
+message.textContent = "";
 const cells = document.querySelectorAll(".cell");
 
 cells.forEach(function(cell) {
@@ -62,7 +67,7 @@ cells.forEach(function(cell) {
             board[index] = currentPlayer;
 
             if (checkWinner()) {
-                message.textContent = "Player " + (currentPlayer === "X" ? "1" : "2") + " wins!";
+                message.textContent = (currentPlayer === "X" ? playerX : playerO) + " wins!";
                 done = true;
                 return;
             }
@@ -75,10 +80,10 @@ cells.forEach(function(cell) {
 
             if (currentPlayer === "X") {
                 currentPlayer = "O";
-                message.textContent = "Player 2's turn (O)";
+                message.textContent = playerO + "'s turn (O)";
             } else {
                 currentPlayer = "X";
-                message.textContent = "Player 1's turn (X)";
+                message.textContent = playerX + "'s turn (X)";
             }
         }
     });
@@ -96,5 +101,5 @@ resetButton.addEventListener("click", function() {
         cell.textContent = cell.dataset.index * 1 + 1;
     });
 
-    message.textContent = "Player 1's turn (X)";
+    message.textContent = playerX + "'s turn (X)";
 });
