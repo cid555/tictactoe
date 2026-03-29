@@ -55,6 +55,7 @@ message.textContent = "";
 const cells = document.querySelectorAll(".cell");
 
 cells.forEach(function(cell) {
+    message.textContent = playerX + "'s turn (X)";
     cell.addEventListener("click", function() {
         if (done) {
             return;
