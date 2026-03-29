@@ -27,7 +27,7 @@ function checkWinner() {
         return true;
     }
     if (board[2] === board[4] && board[4] === board[6]) {
-        return true;
+        return true ;
     }
     return false;
 }
@@ -58,13 +58,13 @@ cells.forEach(function(cell) {
             board[index] = currentPlayer;
 
             if (checkWinner()) {
-                console.log(currentPlayer + " wins!");
+                message.textContent = "Player " + (currentPlayer === "X" ? "1" : "2") + " wins!";
                 done = true;
                 return;
             }
 
             if (checkTie()) {
-                console.log("It's a tie!");
+                message.textContent = "It's a tie!";
                 done = true;
                 return;
             }
