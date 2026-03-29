@@ -14,31 +14,31 @@ playerX = prompt("Enter name for Player X:") || "Player 1";
 playerO = prompt("Enter name for Player O:") || "Player 2";
 
 function checkWinner() {
-    if (board[0] === board[1] && board[1] === board[2]) {
-        return true;
-    }
-    if (board[3] === board[4] && board[4] === board[5]) {
-        return true;
-    }
-    if (board[6] === board[7] && board[7] === board[8]) {
-        return true;
-    }
-    if (board[0] === board[3] && board[3] === board[6]) {
-        return true;
-    }
-    if (board[1] === board[4] && board[4] === board[7]) {
-        return true;
-    }
-    if (board[2] === board[5] && board[5] === board[8]) {
-        return true;
-    }
-    if (board[0] === board[4] && board[4] === board[8]) {
-        return true;
-    }
-    if (board[2] === board[4] && board[4] === board[6]) {
-        return true ;
-    }
-    return false;
+        if (board[0] === board[1] && board[1] === board[2]) {
+            return [0,1,2];
+        }
+        if (board[3] === board[4] && board[4] === board[5]) {
+            return [3,4,5];
+        }
+        if (board[6] === board[7] && board[7] === board[8]) {
+            return [6,7,8];
+        }
+        if (board[0] === board[3] && board[3] === board[6]) {
+            return [0,3,6];
+        }
+        if (board[1] === board[4] && board[4] === board[7]) {
+            return [1,4,7];
+        }
+        if (board[2] === board[5] && board[5] === board[8]) {
+            return [2,5,8];
+        }
+        if (board[0] === board[4] && board[4] === board[8]) {
+            return [0,4,8];
+        }
+        if (board[2] === board[4] && board[4] === board[6]) {
+            return [2,4,6];
+        }
+        return false;
 }
 
 function checkTie() {
@@ -67,8 +67,15 @@ cells.forEach(function(cell) {
             cell.textContent = currentPlayer;
             board[index] = currentPlayer;
 
-            if (checkWinner()) {
+            let winningCells = checkWinner();
+
+            if (winningCells) {
                 message.textContent = (currentPlayer === "X" ? playerX : playerO) + " wins!";
+
+                cells[winningCells[0]].style.backgroundColor = "yellow";
+                cells[winningCells[1]].style.backgroundColor = "yellow";
+                cells[winningCells[2]].style.backgroundColor = "yellow";
+
                 done = true;
                 return;
             }
@@ -93,13 +100,13 @@ cells.forEach(function(cell) {
 const resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", function() {
-
     board = return_default_numbers();
     currentPlayer = "X";
     done = false;
 
     cells.forEach(function(cell) {
         cell.textContent = cell.dataset.index * 1 + 1;
+        cell.style.backgroundColor = "";
     });
 
     message.textContent = playerX + "'s turn (X)";
