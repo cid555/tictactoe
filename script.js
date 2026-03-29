@@ -1,6 +1,10 @@
 console.log("JS connected")
 
-let board = ["1","2","3","4","5","6","7","8","9"];
+function return_default_numbers() {
+    return ["1","2","3","4","5","6","7","8","9"];
+}
+
+let board = return_default_numbers();
 let currentPlayer = "X";
 let done = false;
 
@@ -78,4 +82,19 @@ cells.forEach(function(cell) {
             }
         }
     });
+});
+
+const resetButton = document.querySelector("#reset");
+
+resetButton.addEventListener("click", function() {
+
+    board = return_default_numbers();
+    currentPlayer = "X";
+    done = false;
+
+    cells.forEach(function(cell) {
+        cell.textContent = cell.dataset.index * 1 + 1;
+    });
+
+    message.textContent = "Player 1's turn (X)";
 });
