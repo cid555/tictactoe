@@ -41,6 +41,8 @@ function checkTie() {
     return true;
 }
 
+const message = document.querySelector(".message");
+message.textContent = "Player 1's turn (X)";
 const cells = document.querySelectorAll(".cell");
 
 cells.forEach(function(cell) {
@@ -69,8 +71,10 @@ cells.forEach(function(cell) {
 
             if (currentPlayer === "X") {
                 currentPlayer = "O";
+                message.textContent = "Player 2's turn (O)";
             } else {
                 currentPlayer = "X";
+                message.textContent = "Player 1's turn (X)";
             }
         }
     });
