@@ -4,6 +4,7 @@ function return_default_numbers() {
     return ["1","2","3","4","5","6","7","8","9"];
 }
 
+let gameStarted = false;
 let playerX = "Player 1";
 let playerO = "Player 2";
 let board = return_default_numbers();

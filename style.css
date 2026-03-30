@@ -1,38 +1,60 @@
+body {
+    margin: 0;
+    padding: 5px;
+    font-family: sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
 .game {
-    max-width: 260px;
+    width: min(90vw, 360px);
     margin: 0 auto;
 }
 
+h1 {
+    font-size: 1.5rem;
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+
 .controls {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px; /* space before board */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
 }
 
-.inputs,
-.buttons {
-    display: flex;
-    gap: 10px;
+.controls input,
+.controls button {
+    height: clamp(32px, 8vw, 40px);
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
 }
 
-.inputs input,
 .buttons button {
     flex: 1;
     box-sizing: border-box;
-    padding: 3px;
-    font-size: 0.7rem;
+    padding: 8px;
+    font-size: 0.9rem;
+    height: 40px;
+}
+
+.message {
+    min-height: 24px;
+    text-align: center;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
 }
 
 .board {
+    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-top: 0;
+    gap: 5px;
 }
 
 .cell {
-    aspect-ratio: 1 / 1;
     width: 100%;
-    font-size: 2rem;
+    aspect-ratio: 1 / 1;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 900;
 }
