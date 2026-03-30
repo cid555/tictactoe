@@ -9,22 +9,29 @@
 <div class="game">
         <h1>Tic Tac Toe</h1>
 
-            <input id="playerXInput" placeholder="Player 1 name">
-            <input id="playerOInput" placeholder="Player 2 name">
-            <button id="startBtn">Start Game</button>
+            <div class="controls">
+                <div class="inputs">
+                    <input id="playerXInput" placeholder="Player 1 name">
+                    <input id="playerOInput" placeholder="Player 2 name">
+                </div>
+
+                <div class="buttons">
+                    <button id="startBtn">Start Game</button>
+                    <button id="resetBtn">Clear Names</button>
+                </div>
+            </div>
 
             <div class="board">
-                <button class="cell" data-index="0">1</button>
-                <button class="cell" data-index="1">2</button>
-                <button class="cell" data-index="2">3</button>
-                <button class="cell" data-index="3">4</button>
-                <button class="cell" data-index="4">5</button>
-                <button class="cell" data-index="5">6</button>
-                <button class="cell" data-index="6">7</button>
-                <button class="cell" data-index="7">8</button>
-                <button class="cell" data-index="8">9</button>
+                <button class="cell" data-index="0"></button>
+                <button class="cell" data-index="1"></button>
+                <button class="cell" data-index="2"></button>
+                <button class="cell" data-index="3"></button>
+                <button class="cell" data-index="4"></button>
+                <button class="cell" data-index="5"></button>
+                <button class="cell" data-index="6"></button>
+                <button class="cell" data-index="7"></button>
+                <button class="cell" data-index="8"></button>
             </div>
-            <button id="reset">Reset Game</button>
             <div class="message"></div>
        </div>
     <script src="script.js"></script>

@@ -1,15 +1,38 @@
+.game {
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px; /* space before board */
+}
+
+.inputs,
+.buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.inputs input,
+.buttons button {
+    flex: 1;
+    box-sizing: border-box;
+    padding: 3px;
+    font-size: 0.7rem;
+}
+
 .board {
     display: grid;
-    grid-template-columns: repeat(3, 80px);
-    gap: 5px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-top: 0;
 }
 
 .cell {
-    width: 80px;
-    height: 80px;
-    font-size: 24px;
-}
-
-.winner {
-    background-color: yellow;
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    font-size: 2rem;
 }

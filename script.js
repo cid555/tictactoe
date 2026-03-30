@@ -57,15 +57,25 @@ startBtn.addEventListener("click", function() {
     playerX = playerXInput.value || "Player 1";
     playerO = playerOInput.value || "Player 2";
 
+    board = return_default_numbers();
+    currentPlayer = "X";
+    done = false;
+    gameStarted = true;
+
     message.textContent = playerX + "'s turn (X)";
+    startBtn.style.visibility = "hidden";
+
+    cells.forEach(function(cell) {
+        cell.textContent = "";
+        cell.classList.remove("winner");
+    });
 });
 
 const cells = document.querySelectorAll(".cell");
 cells.forEach(function(cell) {
     cell.addEventListener("click", function() {
-        if (done) {
-            return;
-        }
+
+        if (!gameStarted || done) return;
         const index = cell.dataset.index;
 
         if (board[index] !== "X" && board[index] !== "O") {
@@ -80,20 +90,26 @@ cells.forEach(function(cell) {
                 cells[winningCells[0]].classList.add("winner");
                 cells[winningCells[1]].classList.add("winner");
                 cells[winningCells[2]].classList.add("winner");
-                //cells[winningCells[0]].style.backgroundColor = "yellow";
-                //cells[winningCells[1]].style.backgroundColor = "yellow";
-                //cells[winningCells[2]].style.backgroundColor = "yellow";
 
                 done = true;
+
+                setTimeout(function() {
+                    startBtn.style.visibility = "visible";
+                }, 1200);
+
                 return;
             }
 
             if (checkTie()) {
                 message.textContent = "It's a tie!";
                 done = true;
+
+                setTimeout(function() {
+                    startBtn.style.visibility = "visible";
+                }, 1200);
+
                 return;
             }
-
             if (currentPlayer === "X") {
                 currentPlayer = "O";
                 message.textContent = playerO + "'s turn (O)";
@@ -107,22 +123,30 @@ cells.forEach(function(cell) {
 
 const resetButton = document.querySelector("#reset");
 
-resetButton.addEventListener("click", function() {
-    message.textContent = playerX + "'s turn (X)";
+resetBtn.addEventListener("click", function() {
+    // 1. Reset game state
     board = return_default_numbers();
     currentPlayer = "X";
     done = false;
-    playerXInput.value = "";
-    playerOInput.value = "";
+    gameStarted = false;
 
+    // 2. Reset player names (memory)
     playerX = "Player 1";
     playerO = "Player 2";
 
-    message.textContent = playerX + "'s turn (X)";
+    // 3. Clear input boxes (UI)
+    playerXInput.value = "";
+    playerOInput.value = "";
 
+    // 4. Show Start button again
+    startBtn.style.visibility = "visible";
+
+    // 5. Clear message
+    message.textContent = "";
+
+    // 6. Clear board UI
     cells.forEach(function(cell) {
-        cell.textContent = cell.dataset.index * 1 + 1;
+        cell.textContent = "";
         cell.classList.remove("winner");
     });
-
 });
