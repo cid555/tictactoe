@@ -47,20 +47,39 @@ h1 {
 }
 
 .board {
-    width: 100%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
+    gap: 0;
 }
 
 .cell {
     width: 100%;
     aspect-ratio: 1 / 1;
-    font-size: clamp(3rem, 10vw, 4.5rem);  /* bigger */
+    font-size: clamp(3rem, 10vw, 4.5rem);
     font-weight: 900;
     display: flex;
     align-items: center;
     justify-content: center;
+    background: white;
+    border: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(4),
+.cell:nth-child(5),
+.cell:nth-child(7),
+.cell:nth-child(8) {
+    border-right: 4px solid black;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3),
+.cell:nth-child(4),
+.cell:nth-child(5),
+.cell:nth-child(6) {
+    border-bottom: 4px solid black;
 }
 
 .winner {
@@ -81,3 +100,4 @@ h1 {
         1px 1px 0 rgba(0,0,0,0.2),
         -1px -1px 0 rgba(0,0,0,0.2);
 }
+
