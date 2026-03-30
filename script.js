@@ -62,7 +62,6 @@ startBtn.addEventListener("click", function() {
 
 const cells = document.querySelectorAll(".cell");
 cells.forEach(function(cell) {
-    message.textContent = playerX + "'s turn (X)";
     cell.addEventListener("click", function() {
         if (done) {
             return;
@@ -109,13 +108,15 @@ cells.forEach(function(cell) {
 const resetButton = document.querySelector("#reset");
 
 resetButton.addEventListener("click", function() {
+    message.textContent = playerX + "'s turn (X)";
     board = return_default_numbers();
     currentPlayer = "X";
     done = false;
-    message.textContent = playerX + "'s turn (X)";
-
     playerXInput.value = "";
     playerOInput.value = "";
+
+    playerX = "Player 1";
+    playerO = "Player 2";
 
     message.textContent = playerX + "'s turn (X)";
 
