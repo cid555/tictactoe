@@ -10,9 +10,6 @@ let board = return_default_numbers();
 let currentPlayer = "X";
 let done = false;
 
-playerX = prompt("Enter name for Player X:") || "Player 1";
-playerO = prompt("Enter name for Player O:") || "Player 2";
-
 function checkWinner() {
         if (board[0] === board[1] && board[1] === board[2]) {
             return [0,1,2];
@@ -50,10 +47,20 @@ function checkTie() {
     return true;
 }
 
+const playerXInput = document.getElementById("playerXInput");
+const playerOInput = document.getElementById("playerOInput");
+const startBtn = document.getElementById("startBtn");
 const message = document.querySelector(".message");
 message.textContent = "";
-const cells = document.querySelectorAll(".cell");
 
+startBtn.addEventListener("click", function() {
+    playerX = playerXInput.value || "Player 1";
+    playerO = playerOInput.value || "Player 2";
+
+    message.textContent = playerX + "'s turn (X)";
+});
+
+const cells = document.querySelectorAll(".cell");
 cells.forEach(function(cell) {
     message.textContent = playerX + "'s turn (X)";
     cell.addEventListener("click", function() {
@@ -70,7 +77,6 @@ cells.forEach(function(cell) {
 
             if (winningCells) {
                 message.textContent = (currentPlayer === "X" ? playerX : playerO) + " wins!";
-
 
                 cells[winningCells[0]].classList.add("winner");
                 cells[winningCells[1]].classList.add("winner");
