@@ -60,10 +60,9 @@ cells.forEach(function(cell) {
         if (done) {
             return;
         }
-
         const index = cell.dataset.index;
 
-        if (cell.textContent !== "X" && cell.textContent !== "O") {
+        if (board[index] !== "X" && board[index] !== "O") {
             cell.textContent = currentPlayer;
             board[index] = currentPlayer;
 
@@ -72,9 +71,13 @@ cells.forEach(function(cell) {
             if (winningCells) {
                 message.textContent = (currentPlayer === "X" ? playerX : playerO) + " wins!";
 
-                cells[winningCells[0]].style.backgroundColor = "yellow";
-                cells[winningCells[1]].style.backgroundColor = "yellow";
-                cells[winningCells[2]].style.backgroundColor = "yellow";
+
+                cells[winningCells[0]].classList.add("winner");
+                cells[winningCells[1]].classList.add("winner");
+                cells[winningCells[2]].classList.add("winner");
+                //cells[winningCells[0]].style.backgroundColor = "yellow";
+                //cells[winningCells[1]].style.backgroundColor = "yellow";
+                //cells[winningCells[2]].style.backgroundColor = "yellow";
 
                 done = true;
                 return;
@@ -103,11 +106,11 @@ resetButton.addEventListener("click", function() {
     board = return_default_numbers();
     currentPlayer = "X";
     done = false;
+    message.textContent = playerX + "'s turn (X)";
 
     cells.forEach(function(cell) {
         cell.textContent = cell.dataset.index * 1 + 1;
-        cell.style.backgroundColor = "";
+        cell.classList.remove("winner");
     });
 
-    message.textContent = playerX + "'s turn (X)";
 });
