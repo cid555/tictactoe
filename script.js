@@ -114,6 +114,11 @@ resetButton.addEventListener("click", function() {
     done = false;
     message.textContent = playerX + "'s turn (X)";
 
+    playerXInput.value = "";
+    playerOInput.value = "";
+
+    message.textContent = playerX + "'s turn (X)";
+
     cells.forEach(function(cell) {
         cell.textContent = cell.dataset.index * 1 + 1;
         cell.classList.remove("winner");
