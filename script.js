@@ -81,6 +81,7 @@ cells.forEach(function(cell) {
 
         if (board[index] !== "X" && board[index] !== "O") {
             cell.textContent = currentPlayer;
+            cell.classList.add(currentPlayer);
             board[index] = currentPlayer;
 
             let winningCells = checkWinner();
@@ -149,5 +150,7 @@ resetBtn.addEventListener("click", function() {
     cells.forEach(function(cell) {
         cell.textContent = "";
         cell.classList.remove("winner");
+        cell.classList.remove("X");
+        cell.classList.remove("O");
     });
 });
